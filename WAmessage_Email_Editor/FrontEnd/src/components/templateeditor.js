@@ -18,8 +18,7 @@ class TemplateEditor extends React.Component {
         this.setState({
             temps:data[this.props.id]
         })
-        console.log(this.state.temps)
-        
+        console.log(this.state.temps) 
     } 
      
 
@@ -40,7 +39,6 @@ class TemplateEditor extends React.Component {
     }
         return(
             <div>
-        Temp editor:<br/>
 
 
 
@@ -50,12 +48,12 @@ class TemplateEditor extends React.Component {
                     this.emailEditorRef.current.loadDesign(JSON.parse(this.state.temps.title));
                     }else{
                         console.log('biscuit')
-                        setTimeout (() =>this.emailEditorRef.current.loadDesign(JSON.parse(this.state.temps.title)), 3000);
+                        setTimeout (() =>this.emailEditorRef.current.loadDesign(JSON.parse(this.state.temps.title)), 1000);
                     }
                 
             }} />
         {console.log('in tempeditor id is',this.props.id)}
-        <button onClick={saveDesign}>Save Template</button>
+        <button onClick={saveDesign} style={{backgroundColor:'#222222',color:'white',marginLeft:"45%"}}>Save Template</button>
         </div>
         )
     }
