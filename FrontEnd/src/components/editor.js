@@ -21,7 +21,7 @@ const Editors=(props)=>{
             console.log('saveDesign', design);
             const newTemp = { title :JSON.stringify(design) };
             console.log('stringified',newTemp.title)
-            axios.post('http://localhost:5000/api/posts',newTemp)
+            axios.post('/api/posts',newTemp)
           });        
     }
 

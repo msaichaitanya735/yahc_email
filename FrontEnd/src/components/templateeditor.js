@@ -13,7 +13,7 @@ class TemplateEditor extends React.Component {
       }
 
       async componentDidMount(){
-        const res = await fetch('http://localhost:5000/api/posts');
+        const res = await fetch('/api/posts');
         const data = await res.json();
         this.setState({
             temps:data[this.props.id]
@@ -34,7 +34,7 @@ class TemplateEditor extends React.Component {
             const newTemp = { title :JSON.stringify(design) };
             console.log('stringified',newTemp.title)
             console.log('id:',this.state.temps._id)
-            axios.put(`http://localhost:5000/api/post?id=${this.state.temps._id}`,newTemp);
+            axios.put(`/api/post?id=${this.state.temps._id}`,newTemp);
           })       
     }
         return(

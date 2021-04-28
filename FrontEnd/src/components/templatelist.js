@@ -10,7 +10,7 @@ class Templatelist extends React.Component{
         modalShow:false
     }
     async componentDidMount(){
-        const res = await fetch('http://localhost:5000/api/posts');
+        const res = await fetch('/api/posts');
         const data = await res.json();
         this.setState({
             temps:data
