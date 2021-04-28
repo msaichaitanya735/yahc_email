@@ -24,7 +24,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "node ../server.js",
+    "start": "react-scripts start",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -50,5 +50,5 @@
   },
   "engines": {
     "node": "14.15.4"
-}
+  }
 }

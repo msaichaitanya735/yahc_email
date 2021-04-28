@@ -4,13 +4,15 @@ const mongoose = require('mongoose')
 const tempmodel = require('./model')
 const routes = require('./router')
 const cors = require('cors')
+const dotenv = require('dotenv').config()
+const path = require('path')
 
-const port=5000
+const port=process.env.PORT
 
 app.use(express.json()) 
 app.use(cors())
 
-mongoose.connect("mongodb://Chay735:Asdf1234@chay-cluster-shard-00-00.pdmcr.mongodb.net:27017,chay-cluster-shard-00-01.pdmcr.mongodb.net:27017,chay-cluster-shard-00-02.pdmcr.mongodb.net:27017/template_db?ssl=true&replicaSet=atlas-jctal8-shard-0&authSource=admin&retryWrites=true&w=majority",{
+mongoose.connect(process.env.MONGO_URL,{
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -24,6 +26,17 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // new
 app.use("/api", routes) // new
 
+if(process.env.NODE_ENV==="production"){
+    app.use(express.static(path.join(__dirname,"/FrontEnd/build")));
+
+    app.get("*",(req,res)=>{
+        res.sendFile(path.join(__dirname,"FrontEnd","build","index.html"));
+    })
+}else{
+    app.get("*",(req,res)=>{
+        res.send("RUnning")
+    })
+}
 
 
 app.listen(port,()=>console.log("on port", port))
