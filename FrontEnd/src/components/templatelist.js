@@ -3,6 +3,8 @@ import { Route } from 'react-router'
 import {BrowserRouter as Router, Switch,Link } from 'react-router-dom'
 import {Button} from 'react-bootstrap'
 import Module from './module'
+import Navi from './Navi'
+
 
 class Templatelist extends React.Component{
     state={
@@ -16,19 +18,25 @@ class Templatelist extends React.Component{
             temps:data
         })
         console.log(this.state.temps)
-
+       
     }
 
     render(){
 
         return(
+            <div><Navi/>
+                            <div style={{height:'5vh'}}></div>
             <div style={{display:'grid',gridTemplateColumns : 'repeat(3, 1fr)',gridGap: '20px', alignItems: 'stretch', marginTop:'10px'}}>
 
             {
                 this.state.temps.map((design,i)=>{
+                    var img="";
+                    if(design.img_url)
+                     img=design.img_url;
                     return(
-                        <div  className="card" style={{width:"18rem",border:"black solid 1px",borderRadius:'15px',  boxShadow: '0px 0px 10px 0.8px #ece4e4'}}>
-                            <div className="card-body" style={{textAlign:"center"}}>
+                        <div class="card img-fluid" style={{width:"50px"}}>
+                                <img class="card-img-top" src={img} alt="Card image" style={{width:"150px"}}/>
+                                <div class="card-img-overlay">
                                 <h5 className="card-title">Template {i+1} </h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Data</h6> 
                                 <Router>
@@ -42,6 +50,7 @@ class Templatelist extends React.Component{
                     )
                 })
             }
+        </div>
         </div>
         )
     }

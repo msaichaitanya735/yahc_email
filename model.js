@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
 	title: String,
+	img_url:String,
 	content: String,
 })
 

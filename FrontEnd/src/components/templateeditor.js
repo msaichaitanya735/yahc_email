@@ -8,7 +8,8 @@ class TemplateEditor extends React.Component {
         this.emailEditorRef = React.createRef();
         this.state={
             temps:[],
-            x:[]
+            x:[],
+            img:'',
         }
       }
 
@@ -28,10 +29,43 @@ class TemplateEditor extends React.Component {
         this.emailEditorRef.current.editor.exportHtml((data) => {
             const { design, html } = data;
             console.log('exportHtml', html);
+            const json = {
+                html: html,
+                css: ".test { background-color: green; }"
+              };
+              const username = "a97ae3a0-5cdc-4a9b-85ce-2fe7dd00ff5e";
+              const password = "b6703f3a-23ac-40f9-993b-053430cd2aa9";
+              const options = {
+                method: 'POST',
+                body: JSON.stringify(json),
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': 'Basic ' + btoa(username + ":" + password)
+                }
+              }
+              fetch('https://hcti.io/v1/image', options)
+                .then(res => {
+                    if (res.ok) {
+                    return res.json();
+                    } else {
+                    return Promise.reject(res.status);
+                    }
+                })
+                .then(data => {
+                    // Image URL is available here
+                    console.log(data.url)
+                    this.setState({img:data.url})
+                })
+                .catch(err => console.error(err));
+            console.log('exportHtml', html);
           });
+          
         this.emailEditorRef.current.saveDesign((design) => {
             console.log('saveDesign', design);
-            const newTemp = { title :JSON.stringify(design) };
+            console.log(this.state.img)
+            const newTemp = { title :JSON.stringify(design),
+                img_url:this.state.img,
+                };
             console.log('stringified',newTemp.title)
             console.log('id:',this.state.temps._id)
             axios.put(`/api/post?id=${this.state.temps._id}`,newTemp);

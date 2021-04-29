@@ -34,6 +34,7 @@ router.put('/post', async (req, res) => {
 router.route('/posts').post(async(req,res)=>{
 	const post = new Post({
 		title: req.body.title,
+		img_url:req.body.img_url,
 		content: req.body.content,
 	})
 	await post.save()
