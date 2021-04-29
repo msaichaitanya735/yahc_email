@@ -20,7 +20,7 @@ router.get("/posts", async (req, res) => {
 router.put('/post', async (req, res) => {
 	var id = req.query.id
 	console.log(id)
-	const posts = await Post.findByIdAndUpdate(req.query.id,{title:req.body.title})
+	const posts = await Post.findByIdAndUpdate(req.query.id,{title:req.body.title,img_url:req.body.img_url})
 	await posts.save()
 
 	res.send(posts)

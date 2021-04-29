@@ -18,18 +18,21 @@ class Dashboard extends React.Component{
                 <div class="my-5 text-center container">
                 <div class="row mb-2">
                     <div class="col text-center">
-                        <h1>Carousel with outer controls</h1>
-                        <p class="lead">Does what it says on the tin.</p>
+                        <h1>Email Editor </h1>
+                        <p class="lead">Drag and Drop what all you want.</p>
                     </div>
-                </div>
-                <div class="row d-flex align-items-center">
-                    <div class="col-1 d-flex align-items-center justify-content-center">
-                 <a href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <div class="carousel-nav-icon">
-               
+                    <div style={{width:'1200px',heigth:'2200px' ,border:'solid black 1px',backgroundImage:'url(https://www.ohiomfg.com/wp-content/uploads/revslider/videoslider_boxed/video_space_cover.jpg)',backgroundSize:'cover'}}>
+                        <div style={{border:'solid 2px white',padding:'20px'}}>
+                            <h2>Design Any Template</h2>
+                            <div style={{margin:'100px'}}>
+                                <button>Personal Templates</button>
+                                <button>Poster</button>
+                                <button>Announcments</button>
+                                <button>Annual Reports</button>
+                                <button>Financial Analysis</button>
+                            </div>
+                        </div>
                     </div>
-                    </a>
-                </div>
                 </div>
                 </div>
                 </div>
