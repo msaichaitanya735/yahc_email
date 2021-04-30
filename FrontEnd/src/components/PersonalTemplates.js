@@ -6,7 +6,7 @@ import Module from './module'
 import Navi from './Navi'
 
 
-class Templatelist extends React.Component{
+class PersonalTemplates extends React.Component{
     state={
         temps:[],
         modalShow:false
@@ -64,4 +64,4 @@ class Templatelist extends React.Component{
 
 }
 
-export default Templatelist;
+export default PersonalTemplates;

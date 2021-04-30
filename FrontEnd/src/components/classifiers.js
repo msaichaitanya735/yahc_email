@@ -5,11 +5,13 @@ import {BrowserRouter as Router, Route, Switch,Link } from 'react-router-dom'
 import Editors from './editor'
 import Templateslist from './templatelist'
 import Dashboard from './Dashboard'
+import Navi from './Navi';
 
 
 const Classifier=()=>{
     return(
             <Router>
+            <Navi/>
                 <Switch>
                     <Route exact path="/">
                         <Dashboard/>
